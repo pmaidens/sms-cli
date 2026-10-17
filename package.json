@@ -1,0 +1,32 @@
+{
+  "name": "sms-cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A Twilio SMS inbox and CLI backed by Turso",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "sms": "node --import tsx src/cli.ts",
+    "db:migrate": "node --import tsx scripts/migrate.ts",
+    "deploy": "node --import tsx scripts/deploy.ts",
+    "twilio:number": "node --import tsx scripts/twilio-number.ts",
+    "twilio:connect": "node --import tsx scripts/twilio-number.ts --connect",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "commander": "^15.0.0",
+    "dotenv": "^18.0.8",
+    "twilio": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3"
+  }
+}
